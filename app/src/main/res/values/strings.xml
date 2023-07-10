@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Chatbot</string>
+    <string name="doctor">Dr. Kung Lao</string>
+    <string name="chatbot">Chat Bot</string>
+    <string name="chat">Chat</string>
+    <string name="user">User</string>
+    <string name="notif">Notif</string>
+    <string name="home">Home</string>
+</resources>
