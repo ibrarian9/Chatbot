@@ -15,7 +15,6 @@ import java.util.ArrayList;
 public class UrApotekActivity extends AppCompatActivity {
 
     private RecyclerView rv;
-
     private final ArrayList<Apotek> list = new ArrayList<>();
 
     @Override

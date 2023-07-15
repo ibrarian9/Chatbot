@@ -53,7 +53,6 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ListViewHold
             intent.putExtra("url", model.getUrl());
             holder.itemView.getContext().startActivity(intent);
         });
-
     }
 
     @Override

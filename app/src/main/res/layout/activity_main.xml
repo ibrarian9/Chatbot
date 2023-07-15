@@ -14,7 +14,7 @@
         android:background="@drawable/backgroundfix"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:layout_width="82dp"
         android:layout_height="82dp"
         android:layout_alignParentTop="true"
