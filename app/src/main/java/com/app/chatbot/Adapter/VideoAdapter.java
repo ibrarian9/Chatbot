@@ -1,5 +1,6 @@
 package com.app.chatbot.Adapter;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.app.chatbot.Model.Video;
 
 import com.app.chatbot.R;
+import com.app.chatbot.VideoDetailActivity;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
@@ -20,11 +22,9 @@ import java.util.ArrayList;
 public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ListViewHolder> {
 
     private final ArrayList<Video> listVid;
-    private static RecyclerViewClickListener listener;
 
-    public VideoAdapter(ArrayList<Video> list, RecyclerViewClickListener listener){
+    public VideoAdapter(ArrayList<Video> list){
         this.listVid = list;
-        this.listener = listener;
     }
 
     @NonNull
@@ -45,6 +45,15 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ListViewHold
                 .apply(new RequestOptions().override(55,55))
                 .into(holder.imgVid);
 
+        holder.itemView.setOnClickListener(view -> {
+            Intent intent = new Intent(holder.itemView.getContext(), VideoDetailActivity.class);
+
+            intent.putExtra("name", model.getName());
+            intent.putExtra("durasi", model.getDurasi());
+            intent.putExtra("url", model.getUrl());
+            holder.itemView.getContext().startActivity(intent);
+        });
+
     }
 
     @Override
@@ -52,7 +61,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ListViewHold
         return listVid.size();
     }
 
-    static class ListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    static class ListViewHolder extends RecyclerView.ViewHolder {
         TextView tvVid, tvDur;
         ImageView imgVid;
         ListViewHolder(@NonNull View itemView) {
@@ -61,14 +70,6 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ListViewHold
             tvVid = itemView.findViewById(R.id.tvVideo);
             tvDur = itemView.findViewById(R.id.tvDurasi);
             imgVid = itemView.findViewById(R.id.vidImg);
-            itemView.setOnClickListener(this);
         }
-
-        public void onClick(View v) {
-            listener.onClick(v, getAdapterPosition());
-        }
-    }
-    public interface RecyclerViewClickListener {
-        void onClick(View v, int position);
     }
 }

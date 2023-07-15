@@ -15,7 +15,6 @@ import java.util.ArrayList;
 
 public class VideoMoodActivity extends AppCompatActivity {
     private RecyclerView rv;
-    private VideoAdapter.RecyclerViewClickListener listener;
     private final ArrayList<Video> list = new ArrayList<>();
 
     @Override
@@ -29,21 +28,9 @@ public class VideoMoodActivity extends AppCompatActivity {
         list.addAll(VideoData.getListData());
         showRecyclerList();
     }
-
     private void showRecyclerList() {
-        setOnClickListen();
         rv.setLayoutManager(new LinearLayoutManager(this));
-        VideoAdapter vid = new VideoAdapter(list, listener);
+        VideoAdapter vid = new VideoAdapter(list);
         rv.setAdapter(vid);
-    }
-
-    private void setOnClickListen() {
-        listener = (view, position) -> {
-            Intent intent = new Intent(getApplicationContext(), VideoDetailActivity.class);
-            intent.putExtra("name",list.get(position).getName());
-            intent.putExtra("waktu", list.get(position).getDurasi());
-            intent.putExtra("url", list.get(position).getUrl());
-            startActivity(intent);
-        };
     }
 }

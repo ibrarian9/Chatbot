@@ -19,9 +19,7 @@ import java.util.ArrayList;
 public class VideoDetailActivity extends AppCompatActivity {
 
     private RecyclerView rv;
-    private VideoAdapter.RecyclerViewClickListener listener;
     private final ArrayList<Video> list = new ArrayList<>();
-
     TextView tvName, tvWaktu;
     VideoView videoView;
 
@@ -60,7 +58,7 @@ public class VideoDetailActivity extends AppCompatActivity {
 
     private void showRecyclerList() {
         rv.setLayoutManager(new LinearLayoutManager(this));
-        VideoAdapter vid = new VideoAdapter(list, listener);
+        VideoAdapter vid = new VideoAdapter(list);
         rv.setAdapter(vid);
     }
 }
